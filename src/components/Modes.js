@@ -31,6 +31,7 @@ export default function Modes({ whichMode }) {
           className="btn-check"
           name="options-outlined"
           id="2nd-outlined"
+          disabled
         />
         <label className="btn btn-outline-primary" htmlFor="2nd-outlined">
           Random Mode

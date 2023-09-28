@@ -1,7 +1,5 @@
 import { React, useState } from "react";
-import data from "french-verbs-lefff/dist/conjugations.json";
-
-const filteredWords = Object.keys(data);
+import data from "../verbs.json";
 
 export default function AddInput({ output, onOutput, onDelete }) {
   const [input, setInput] = useState("");
@@ -19,14 +17,26 @@ export default function AddInput({ output, onOutput, onDelete }) {
           placeholder="Search a verb..."
           onChange={InputHandler}
           onKeyDown={(e) => {
-            if (e.key === "Enter" && filteredWords.includes(input)) {
+            if (e.key === "Enter" && data.includes(input.toLowerCase())) {
               setInput("");
-              onOutput(input);
+              onOutput(input.toLowerCase());
             }
           }}
           list="words"
         />
         <List word={input.toLowerCase()} />
+        <button
+          onClick={() => {
+            if (data.includes(input.toLowerCase())) {
+              setInput("");
+              onOutput(input.toLowerCase());
+            } else {
+              alert("Not a word");
+            }
+          }}
+        >
+          Add
+        </button>
         {output.map((each) => (
           <div key={each.id}>
             <button>
@@ -46,7 +56,7 @@ export default function AddInput({ output, onOutput, onDelete }) {
 }
 
 function List({ word }) {
-  const filteredData = filteredWords.filter((w) => {
+  const filteredData = data.filter((w) => {
     if (word !== "") {
       return w
         .normalize("NFD")

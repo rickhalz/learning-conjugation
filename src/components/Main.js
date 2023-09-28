@@ -3,6 +3,7 @@ import AddInput from "./SearchBar";
 import Menu from "./Menu";
 import Modes from "./Modes";
 import FinalPhase from "./FinalPhase";
+import toast, { Toaster } from "react-hot-toast";
 
 const initialStates = {
   phase1: true,
@@ -11,35 +12,71 @@ const initialStates = {
 };
 
 const tensesInfo = [
-  { id: 0, title: "PRESENT", ticked: false, type: "présent" },
-  { id: 1, title: "FUTUR", ticked: false, type: "futur simple" },
-  { id: 2, title: "IMPARFAIT", ticked: false, type: "imparfait" },
-  { id: 3, title: "PASSE_SIMPLE", ticked: false, type: "passé simple" },
-  { id: 4, title: "PASSE_COMPOSE", ticked: false, type: "passé composé" },
-  { id: 5, title: "PLUS_QUE_PARFAIT", ticked: false, type: "plus-que-parfait" },
+  { id: 0, title: "present", ticked: false, type: "présent" },
+  { id: 1, title: "imparfait", ticked: false, type: "imparfait" },
+  { id: 2, title: "passeSimple", ticked: false, type: "passé simple" },
+  { id: 3, title: "futurSimple", ticked: false, type: "futur simple" },
+  { id: 4, title: "passeCompose", ticked: false, type: "passé composé" },
+  { id: 5, title: "plusQueParfait", ticked: false, type: "plus-que-parfait" },
   {
     id: 6,
-    title: "CONDITIONNEL_PRESENT",
+    title: "passeAnterieur",
     ticked: false,
-    type: "conditionnel présent",
+    type: "passe anterieur",
   },
   {
     id: 7,
-    title: "IMPERATIF_PRESENT",
+    title: "futurAnterieur",
     ticked: false,
-    type: "imperatif présent",
+    type: "futur anterieur",
   },
   {
     id: 8,
-    title: "SUBJONCTIF_PRESENT",
+    title: "subjonctifPresent",
     ticked: false,
-    type: "subjonctif présent",
+    type: "présent",
   },
   {
     id: 9,
-    title: "SUBJONCTIF_IMPARFAIT",
+    title: "subjonctifImparfait",
     ticked: false,
-    type: "subjonctif imparfait",
+    type: "imparfait",
+  },
+  {
+    id: 10,
+    title: "subjonctifPasse",
+    ticked: false,
+    type: "passé",
+  },
+  {
+    id: 11,
+    title: "subjonctifPlusQueParfait",
+    ticked: false,
+    type: "plus-que-parfait",
+  },
+  {
+    id: 12,
+    title: "conditionnelPresent",
+    ticked: false,
+    type: "present",
+  },
+  {
+    id: 13,
+    title: "conditionnelPasse",
+    ticked: false,
+    type: "passé",
+  },
+  {
+    id: 14,
+    title: "imperatif",
+    ticked: false,
+    type: "present",
+  },
+  {
+    id: 15,
+    title: "imperatifPasse",
+    ticked: false,
+    type: "passé",
   },
 ];
 
@@ -50,7 +87,12 @@ export default function Main() {
   const [states, setStates] = useState(initialStates);
   const [output, setOutput] = useState([]);
   const [tenses, setTenses] = useState(tensesInfo);
+
   let checkTenses = tenses.filter((each) => each.ticked !== false);
+
+  function notify() {
+    toast.error("Add verb or tense...");
+  }
 
   function HandleToggle(currentTense) {
     setTenses(
@@ -84,6 +126,9 @@ export default function Main() {
 
   return (
     <>
+      <div>
+        <Toaster position="bottom-right" reverseOrder={false} />
+      </div>
       <h1>progressbar incoming...</h1>
       <div style={{ display: states.phase1 ? "block" : "none" }}>
         <fieldset>
@@ -99,7 +144,7 @@ export default function Main() {
             if (output.length !== 0 && checkTenses.length !== 0) {
               ToggleInfo(e, "phase2", "phase1");
             } else {
-              alert("ADD SOMEFUCKING VERBS OR TENSES");
+              notify();
             }
           }}
         >
@@ -130,6 +175,8 @@ export default function Main() {
         <button
           onClick={(e) => {
             ToggleInfo(e, "phase1", "phase3");
+            setTenses(tensesInfo);
+            setOutput([]);
           }}
         >
           Back Home
