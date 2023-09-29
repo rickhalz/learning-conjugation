@@ -1,96 +1,45 @@
 export default function Menu({ tenses, HandleToggle }) {
   return (
-    <>
-      <table className="table table-light table-striped">
+    <div className="w-75 mx-auto">
+      <table className="table table-light table-striped table-bordered">
         <tbody>
           <tr>
-            <th>Indicatif</th>
+            <th colSpan="8">
+              <div className="text-center">Indicatif</div>
+            </th>
           </tr>
           <tr>
             {tenses.map(
               (tense) =>
+                tense.id <= 3 && (
+                  <td key={tense.id}>
+                    <label>
+                      <input
+                        style={{ marginRight: "4px" }}
+                        type="checkbox"
+                        checked={tense.ticked}
+                        onChange={(e) => {
+                          HandleToggle({
+                            ...tense,
+                            ticked: e.target.checked,
+                          });
+                        }}
+                      />
+                      {tense.type}
+                    </label>
+                  </td>
+                ),
+            )}
+          </tr>
+          <tr>
+            {tenses.map(
+              (tense) =>
+                tense.id > 3 &&
                 tense.id <= 7 && (
                   <td key={tense.id}>
                     <label>
                       <input
-                        type="checkbox"
-                        checked={tense.ticked}
-                        onChange={(e) => {
-                          HandleToggle({
-                            ...tense,
-                            ticked: e.target.checked,
-                          });
-                        }}
-                      />
-                      {tense.type}
-                    </label>
-                  </td>
-                ),
-            )}
-          </tr>
-          <tr>
-            <th>Subjonctif</th>
-          </tr>
-          <tr>
-            {tenses.map(
-              (tense) =>
-                tense.id > 7 &&
-                tense.id <= 11 && (
-                  <td key={tense.id}>
-                    <label>
-                      <input
-                        type="checkbox"
-                        checked={tense.ticked}
-                        onChange={(e) => {
-                          HandleToggle({
-                            ...tense,
-                            ticked: e.target.checked,
-                          });
-                        }}
-                      />
-                      {tense.type}
-                    </label>
-                  </td>
-                ),
-            )}
-          </tr>
-          <tr>
-            <th>Conditionnel</th>
-          </tr>
-          <tr>
-            {tenses.map(
-              (tense) =>
-                tense.id > 11 &&
-                tense.id <= 13 && (
-                  <td key={tense.id}>
-                    <label>
-                      <input
-                        type="checkbox"
-                        checked={tense.ticked}
-                        onChange={(e) => {
-                          HandleToggle({
-                            ...tense,
-                            ticked: e.target.checked,
-                          });
-                        }}
-                      />
-                      {tense.type}
-                    </label>
-                  </td>
-                ),
-            )}
-          </tr>
-          <tr>
-            <th>Imperatif</th>
-          </tr>
-          <tr>
-            {tenses.map(
-              (tense) =>
-                tense.id > 13 &&
-                tense.id <= 15 && (
-                  <td key={tense.id}>
-                    <label>
-                      <input
+                        style={{ marginRight: "4px" }}
                         type="checkbox"
                         checked={tense.ticked}
                         onChange={(e) => {
@@ -107,9 +56,91 @@ export default function Menu({ tenses, HandleToggle }) {
             )}
           </tr>
 
-          <tr></tr>
+          <tr>
+            <th colSpan={4}>
+              <div className="text-center">Subjonctif</div>
+            </th>
+          </tr>
+          <tr>
+            {tenses.map(
+              (tense) =>
+                tense.id > 7 &&
+                tense.id <= 11 && (
+                  <td key={tense.id}>
+                    <label>
+                      <input
+                        style={{ marginRight: "4px" }}
+                        type="checkbox"
+                        checked={tense.ticked}
+                        onChange={(e) => {
+                          HandleToggle({
+                            ...tense,
+                            ticked: e.target.checked,
+                          });
+                        }}
+                      />
+                      {tense.type}
+                    </label>
+                  </td>
+                ),
+            )}
+          </tr>
+          <tr>
+            <th colSpan={2}>
+              <div className="text-center">Conditonnel</div>
+            </th>
+            <th colSpan={2}>
+              <div className="text-center">Imperatif</div>
+            </th>
+          </tr>
+          <tr>
+            {tenses.map(
+              (tense) =>
+                tense.id > 11 &&
+                tense.id <= 13 && (
+                  <td key={tense.id}>
+                    <label>
+                      <input
+                        style={{ marginRight: "4px" }}
+                        type="checkbox"
+                        checked={tense.ticked}
+                        onChange={(e) => {
+                          HandleToggle({
+                            ...tense,
+                            ticked: e.target.checked,
+                          });
+                        }}
+                      />
+                      {tense.type}
+                    </label>
+                  </td>
+                ),
+            )}
+            {tenses.map(
+              (tense) =>
+                tense.id > 13 &&
+                tense.id <= 15 && (
+                  <td key={tense.id}>
+                    <label>
+                      <input
+                        style={{ marginRight: "4px" }}
+                        type="checkbox"
+                        checked={tense.ticked}
+                        onChange={(e) => {
+                          HandleToggle({
+                            ...tense,
+                            ticked: e.target.checked,
+                          });
+                        }}
+                      />
+                      {tense.type}
+                    </label>
+                  </td>
+                ),
+            )}
+          </tr>
         </tbody>
       </table>
-    </>
+    </div>
   );
 }

@@ -13,6 +13,7 @@
     "french-verbs": "^5.2.2",
     "french-verbs-lefff": "^3.2.2",
     "gh-pages": "^6.0.0",
+    "particles.js": "^2.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",

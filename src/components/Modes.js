@@ -4,7 +4,7 @@ export default function Modes({ whichMode }) {
   const [mode, setMode] = useState(whichMode);
 
   return (
-    <>
+    <div>
       <fieldset>
         <input
           type="radio"
@@ -37,6 +37,6 @@ export default function Modes({ whichMode }) {
           Random Mode
         </label>
       </fieldset>
-    </>
+    </div>
   );
 }

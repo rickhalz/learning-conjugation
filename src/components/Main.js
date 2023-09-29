@@ -12,71 +12,71 @@ const initialStates = {
 };
 
 const tensesInfo = [
-  { id: 0, title: "present", ticked: false, type: "présent" },
-  { id: 1, title: "imparfait", ticked: false, type: "imparfait" },
-  { id: 2, title: "passeSimple", ticked: false, type: "passé simple" },
-  { id: 3, title: "futurSimple", ticked: false, type: "futur simple" },
-  { id: 4, title: "passeCompose", ticked: false, type: "passé composé" },
-  { id: 5, title: "plusQueParfait", ticked: false, type: "plus-que-parfait" },
+  { id: 0, title: "present", ticked: false, type: " présent" },
+  { id: 1, title: "imparfait", ticked: false, type: " imparfait" },
+  { id: 2, title: "passeSimple", ticked: false, type: " passé simple" },
+  { id: 3, title: "futurSimple", ticked: false, type: " futur simple" },
+  { id: 4, title: "passeCompose", ticked: false, type: " passé composé" },
+  { id: 5, title: "plusQueParfait", ticked: false, type: " plus-que-parfait" },
   {
     id: 6,
     title: "passeAnterieur",
     ticked: false,
-    type: "passe anterieur",
+    type: " passé anterieur",
   },
   {
     id: 7,
     title: "futurAnterieur",
     ticked: false,
-    type: "futur anterieur",
+    type: " futur anterieur",
   },
   {
     id: 8,
     title: "subjonctifPresent",
     ticked: false,
-    type: "présent",
+    type: " présent",
   },
   {
     id: 9,
     title: "subjonctifImparfait",
     ticked: false,
-    type: "imparfait",
+    type: " imparfait",
   },
   {
     id: 10,
     title: "subjonctifPasse",
     ticked: false,
-    type: "passé",
+    type: " passé",
   },
   {
     id: 11,
     title: "subjonctifPlusQueParfait",
     ticked: false,
-    type: "plus-que-parfait",
+    type: " plus-que-parfait",
   },
   {
     id: 12,
     title: "conditionnelPresent",
     ticked: false,
-    type: "present",
+    type: " présent",
   },
   {
     id: 13,
     title: "conditionnelPasse",
     ticked: false,
-    type: "passé",
+    type: " passé",
   },
   {
     id: 14,
     title: "imperatif",
     ticked: false,
-    type: "present",
+    type: " présent",
   },
   {
     id: 15,
     title: "imperatifPasse",
     ticked: false,
-    type: "passé",
+    type: " passé",
   },
 ];
 
@@ -182,7 +182,6 @@ export default function Main() {
           Back Home
         </button>
       </div>
-      <h1>hi</h1>
     </>
   );
 }

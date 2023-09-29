@@ -1,10 +1,10 @@
 export default function Header() {
   return (
     <>
-      <nav className="navbar bg-primary">
-        <div className="container-fluid">
+      <nav className="navbar">
+        <div className="container-fluid justify-content-center">
           <a className="navbar-brand text-secondary" href="/#">
-            Navbar
+            Navbar... more...
           </a>
           <ul className="nav">
             <li className="nav-item dropdown">

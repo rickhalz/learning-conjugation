@@ -1,11 +1,9 @@
 export default function Footer() {
   return (
     <>
-      <footer className="py-4 bg-primary text-secondary">
-        <div className="sticky-bottom container text-center">
-          <small>Copyright &copy; Your Website</small>
-        </div>
-      </footer>
+      <div className="py-4 container text-center fixed-bottom text-white">
+        <small>Copyright &copy; Q depzaikhoaito</small>
+      </div>
     </>
   );
 }
