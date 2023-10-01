@@ -5,7 +5,10 @@ export default function Menu({ tenses, HandleToggle }) {
     <div className="w-75 mx-auto">
       <table
         className="table table-light table-striped table-bordered"
-        style={{ opacity: "0.9" }}
+        style={{
+          opacity: "0.9",
+          border: "solid black 1px",
+        }}
       >
         <tbody>
           <tr>

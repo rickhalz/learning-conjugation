@@ -1,6 +1,7 @@
 import { useState } from "react";
 import data from "../out.json";
 // import _ from "lodash";
+import "./index.css";
 
 const structuredAns = [
   { id: 0, ans: "", title: "1st sg." },
@@ -26,11 +27,12 @@ export default function FinalPhase({ tenses, mode, words }) {
 }
 
 function StructuredMode({ tenses, words }) {
+  const [points, setPoints] = useState(0);
   const [input, setInput] = useState(structuredAns);
   const [state, setState] = useState(false);
   const [number, setNumber] = useState(0);
   const [tense, setTense] = useState(0);
-  const [isDisabled, setIsDisabled] = useState(false);
+  const [showPoints, setShowPoints] = useState(false);
   const [diffAns, setDiffAns] = useState([]);
 
   let verifyOrNext = state ? "Next" : "Verify";
@@ -96,13 +98,15 @@ function StructuredMode({ tenses, words }) {
 
   let body = (
     <>
-      <h2>{words[number].word}</h2>
-      <h3>{additional + tenses[tense].type}</h3>
-      <table className="table table-bordered border-primary">
+      <h2 className="w-50 mx-auto text-white">{words[number].word}</h2>
+      <h3 className="w-50 mx-auto text-white">
+        {additional + tenses[tense].type}
+      </h3>
+      <table className="table table-bordered border-primary w-50 mx-auto">
         <tbody>
           {input.map((i) => (
             <tr key={i.id}>
-              <td>{i.title}</td>
+              <td style={{ width: "90px" }}>{i.title}</td>
               <td>
                 {state === true ? (
                   <>
@@ -114,6 +118,7 @@ function StructuredMode({ tenses, words }) {
                     <input
                       type="text"
                       value={i.ans}
+                      style={{ width: "100%" }}
                       onChange={(e) => {
                         HandleAnswer({
                           ...i,
@@ -131,35 +136,52 @@ function StructuredMode({ tenses, words }) {
     </>
   );
 
-  console.log(diffAns);
-
   return (
     <>
-      <div>{body}</div>
-      <button
-        disabled={isDisabled}
-        onClick={() => {
-          if (state) {
-            setDiffAns([]);
-            setInput(structuredAns);
-            if (tense === tenses.length - 1) {
-              if (number < words.length - 1) {
-                setTense(0);
-                HandleNumber();
+      {showPoints ? (
+        <div>
+          {points <= (words.length * 6) / 2 ? (
+            <>
+              <h3 className="text-center text-white">
+                {points} / {words.length * 6}
+              </h3>
+              <h3 className="text-white">u suck</h3>
+            </>
+          ) : (
+            <h3 className="text center text-white">
+              {points} / {words.length * 6}
+            </h3>
+          )}
+        </div>
+      ) : (
+        <>
+          <div>{body}</div>
+          <button
+            onClick={() => {
+              if (state) {
+                setDiffAns([]);
+                setInput(structuredAns);
+                if (tense === tenses.length - 1) {
+                  if (number < words.length - 1) {
+                    setTense(0);
+                    HandleNumber();
+                  } else {
+                    setShowPoints(!showPoints);
+                  }
+                } else {
+                  HandleTense();
+                }
               } else {
-                setIsDisabled(true);
+                HandleDiff(inputAns, tensesAnswer);
+                setPoints((p) => p + (6 - diffAns.length));
               }
-            } else {
-              HandleTense();
-            }
-          } else {
-            HandleDiff(inputAns, tensesAnswer);
-          }
-          setState(!state);
-        }}
-      >
-        {verifyOrNext}
-      </button>
+              setState(!state);
+            }}
+          >
+            {verifyOrNext}
+          </button>
+        </>
+      )}
     </>
   );
 }
