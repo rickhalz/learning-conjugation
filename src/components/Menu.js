@@ -1,7 +1,12 @@
+import { motion } from "framer-motion";
+
 export default function Menu({ tenses, HandleToggle }) {
   return (
     <div className="w-75 mx-auto">
-      <table className="table table-light table-striped table-bordered">
+      <table
+        className="table table-light table-striped table-bordered"
+        style={{ opacity: "0.9" }}
+      >
         <tbody>
           <tr>
             <th colSpan="8">
@@ -14,7 +19,13 @@ export default function Menu({ tenses, HandleToggle }) {
                 tense.id <= 3 && (
                   <td key={tense.id}>
                     <label>
-                      <input
+                      <motion.input
+                        animate={{
+                          scale: tense.ticked ? 1 : 0.8,
+                          backgroundColor: tense.ticked
+                            ? "rgba(255, 255, 255, 1)"
+                            : "rgba(255, 255, 255, 0.5)",
+                        }}
                         style={{ marginRight: "4px" }}
                         type="checkbox"
                         checked={tense.ticked}
@@ -38,7 +49,13 @@ export default function Menu({ tenses, HandleToggle }) {
                 tense.id <= 7 && (
                   <td key={tense.id}>
                     <label>
-                      <input
+                      <motion.input
+                        animate={{
+                          scale: tense.ticked ? 1 : 0.8,
+                          backgroundColor: tense.ticked
+                            ? "rgba(255, 255, 255, 1)"
+                            : "rgba(255, 255, 255, 0.5)",
+                        }}
                         style={{ marginRight: "4px" }}
                         type="checkbox"
                         checked={tense.ticked}
@@ -68,7 +85,13 @@ export default function Menu({ tenses, HandleToggle }) {
                 tense.id <= 11 && (
                   <td key={tense.id}>
                     <label>
-                      <input
+                      <motion.input
+                        animate={{
+                          scale: tense.ticked ? 1 : 0.8,
+                          backgroundColor: tense.ticked
+                            ? "rgba(255, 255, 255, 1)"
+                            : "rgba(255, 255, 255, 0.5)",
+                        }}
                         style={{ marginRight: "4px" }}
                         type="checkbox"
                         checked={tense.ticked}
@@ -100,7 +123,13 @@ export default function Menu({ tenses, HandleToggle }) {
                 tense.id <= 13 && (
                   <td key={tense.id}>
                     <label>
-                      <input
+                      <motion.input
+                        animate={{
+                          scale: tense.ticked ? 1 : 0.8,
+                          backgroundColor: tense.ticked
+                            ? "rgba(255, 255, 255, 1)"
+                            : "rgba(255, 255, 255, 0.5)",
+                        }}
                         style={{ marginRight: "4px" }}
                         type="checkbox"
                         checked={tense.ticked}
@@ -122,7 +151,13 @@ export default function Menu({ tenses, HandleToggle }) {
                 tense.id <= 15 && (
                   <td key={tense.id}>
                     <label>
-                      <input
+                      <motion.input
+                        animate={{
+                          scale: tense.ticked ? 1 : 0.8,
+                          backgroundColor: tense.ticked
+                            ? "rgba(255, 255, 255, 1)"
+                            : "rgba(255, 255, 255, 0.5)",
+                        }}
                         style={{ marginRight: "4px" }}
                         type="checkbox"
                         checked={tense.ticked}

@@ -5,7 +5,7 @@ import "./index.css";
 
 function App() {
   return (
-    <div className="my-container ">
+    <div className="my-container">
       <Header />
       <Main />
       <Footer />

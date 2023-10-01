@@ -1,6 +1,6 @@
 import { useState } from "react";
 import data from "../out.json";
-import _ from "lodash";
+// import _ from "lodash";
 
 const structuredAns = [
   { id: 0, ans: "", title: "1st sg." },
