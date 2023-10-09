@@ -5,3 +5,26 @@ input:focus {
 input {
   border: none;
 }
+
+.pot {
+  bottom: 15%;
+  position: absolute;
+  -webkit-animation: linear infinite;
+  animation: linear infinite;
+  -webkit-animation-name: run;
+  animation-name: run;
+  -webkit-animation-duration: 5s;
+  animation-duration: 5s;
+}
+
+@keyframes run {
+  0% {
+    left: 0;
+  }
+  50% {
+    left: 100%;
+  }
+  100% {
+    left: 0;
+  }
+}

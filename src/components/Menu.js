@@ -4,15 +4,14 @@ export default function Menu({ tenses, HandleToggle }) {
   return (
     <div className="w-75 mx-auto">
       <table
-        className="table table-light table-striped table-bordered"
+        className="table table-striped"
         style={{
           opacity: "0.9",
-          border: "solid black 1px",
         }}
       >
         <tbody>
           <tr>
-            <th colSpan="8">
+            <th colSpan="8" className="rounded-top-3">
               <div className="text-center">Indicatif</div>
             </th>
           </tr>
@@ -29,7 +28,9 @@ export default function Menu({ tenses, HandleToggle }) {
                             ? "rgba(255, 255, 255, 1)"
                             : "rgba(255, 255, 255, 0.5)",
                         }}
-                        style={{ marginRight: "4px" }}
+                        style={{
+                          marginRight: "4px",
+                        }}
                         type="checkbox"
                         checked={tense.ticked}
                         onChange={(e) => {
@@ -124,7 +125,13 @@ export default function Menu({ tenses, HandleToggle }) {
               (tense) =>
                 tense.id > 11 &&
                 tense.id <= 13 && (
-                  <td key={tense.id}>
+                  <td
+                    key={tense.id}
+                    style={{
+                      borderBottom: "0",
+                      borderRadius: tense.id === 12 ? "0 0 0 .5rem" : "",
+                    }}
+                  >
                     <label>
                       <motion.input
                         animate={{
@@ -152,7 +159,13 @@ export default function Menu({ tenses, HandleToggle }) {
               (tense) =>
                 tense.id > 13 &&
                 tense.id <= 15 && (
-                  <td key={tense.id}>
+                  <td
+                    key={tense.id}
+                    style={{
+                      borderRadius: tense.id === 15 ? "0 0 0.5rem 0" : "",
+                      borderBottom: "0",
+                    }}
+                  >
                     <label>
                       <motion.input
                         animate={{

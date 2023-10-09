@@ -125,11 +125,10 @@ export default function Main() {
   }
 
   return (
-    <>
+    <div className="mt-5">
       <div>
         <Toaster position="bottom-right" reverseOrder={false} />
       </div>
-      <h1>progressbar incoming...</h1>
       <div style={{ display: states.phase1 ? "block" : "none" }}>
         <fieldset>
           <AddInput
@@ -139,49 +138,27 @@ export default function Main() {
           />
           <Menu tenses={tenses} HandleToggle={HandleToggle} />
         </fieldset>
-        <button
-          onClick={(e) => {
-            if (output.length !== 0 && checkTenses.length !== 0) {
-              ToggleInfo(e, "phase2", "phase1");
-            } else {
-              notify();
-            }
-          }}
-        >
-          Next
-        </button>
+        <Modes whichMode={selectedMode} />
+        <div className="w-25 mx-auto d-flex justify-content-center">
+          <button
+            className="shadow-lg p-3 mb-5 bg-body-tertiary mt-3 btn-sm btn rounded"
+            onClick={(e) => {
+              if (output.length !== 0 && checkTenses.length !== 0) {
+                ToggleInfo(e, "phase2", "phase1");
+              } else {
+                notify();
+              }
+            }}
+          >
+            Next
+          </button>
+        </div>
       </div>
       <div style={{ display: states.phase2 ? "block" : "none" }}>
-        <Modes whichMode={selectedMode} />
-        <button
-          onClick={(e) => {
-            ToggleInfo(e, "phase1", "phase2");
-          }}
-        >
-          Back
-        </button>
-        <button
-          onClick={(e) => {
-            ToggleInfo(e, "phase3", "phase2");
-          }}
-        >
-          Next
-        </button>
-      </div>
-      <div style={{ display: states.phase3 ? "block" : "none" }}>
-        {states.phase3 && (
+        {states.phase2 && (
           <FinalPhase tenses={checkTenses} mode={selectedMode} words={output} />
         )}
-        <button
-          onClick={(e) => {
-            ToggleInfo(e, "phase1", "phase3");
-            setTenses(tensesInfo);
-            setOutput([]);
-          }}
-        >
-          Back Home
-        </button>
       </div>
-    </>
+    </div>
   );
 }

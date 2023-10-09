@@ -66,7 +66,7 @@ export default function AddInput({ output, onOutput, onDelete }) {
           <motion.i className="bi bi-search"></motion.i>
         </button>
       </div>
-      <ul style={{ listStyleType: "none" }}>
+      <ul className=" w-75 px-0 mx-auto" style={{ listStyleType: "none" }}>
         <div
           className="d-flex flex-row justify-content-center"
           style={{ height: "30px" }}
@@ -76,13 +76,10 @@ export default function AddInput({ output, onOutput, onDelete }) {
               <motion.li
                 layout
                 key={each.id}
-                className="ms-4 badge rounded-pill text-bg-light pt-2"
+                className="ms-2 me-2 badge rounded-pill text-bg-light pt-2"
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.8, opacity: 0 }}
-                transition={{
-                  type: "spring",
-                }}
               >
                 {each.word}
                 <i

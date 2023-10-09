@@ -1,50 +1,10 @@
 export default function Header() {
   return (
-    <>
-      <nav className="navbar">
-        <div className="container-fluid justify-content-center">
-          <a className="navbar-brand text-secondary" href="/#">
-            Navbar... more...
-          </a>
-          <ul className="nav">
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link text-secondary"
-                data-bs-toggle="dropdown"
-                href="/#"
-                role="button"
-                aria-expanded="false"
-              >
-                <i className="bi bi-list" style={{ fontSize: "2rem" }} />
-              </a>
-              <ul className="dropdown-menu bg-primary dropdown-menu-end">
-                <List props="dropdown-item text-secondary" href="/#">
-                  Conjugation Trainer
-                </List>
-                <List props="dropdown-item text-secondary" href="/#">
-                  Conjugation Tables
-                </List>
-                <hr className="dropdown-divider bg-secondary" />
-                <List props="dropdown-item text-secondary" href="/#">
-                  Info
-                </List>
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </>
-  );
-}
-
-function List({ props, href, children }) {
-  return (
-    <>
-      <li>
-        <a className={props} href={href}>
-          {children}
-        </a>
-      </li>
-    </>
+    <div
+      className="d-flex justify-content-center pt-3 pb-3 box"
+      animate={{ opacity: 1, scale: 1 }}
+    >
+      <h1>Conjugation Trainer</h1>
+    </div>
   );
 }

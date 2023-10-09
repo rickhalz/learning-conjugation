@@ -98,19 +98,41 @@ function StructuredMode({ tenses, words }) {
 
   let body = (
     <>
-      <h2 className="w-50 mx-auto text-white">{words[number].word}</h2>
-      <h3 className="w-50 mx-auto text-white">
-        {additional + tenses[tense].type}
-      </h3>
-      <table className="table table-bordered border-primary w-50 mx-auto">
+      <h2 className="w-50 mx-auto text-white">
+        {words[number].word} - {additional + tenses[tense].type}
+      </h2>
+      <table className="table table-striped w-50 mx-auto">
         <tbody>
           {input.map((i) => (
             <tr key={i.id}>
-              <td style={{ width: "90px" }}>{i.title}</td>
-              <td>
+              <td
+                style={{
+                  width: "90px",
+                  borderRight:
+                    i.id % 2 === 0 ? "2px solid #fff" : "2px solid #f2f2f2",
+                  borderTopLeftRadius: i.id === 0 ? "0.5rem" : "",
+                  borderBottomLeftRadius: i.id === 5 ? "0.5rem" : "",
+                }}
+              >
+                {i.title}
+              </td>
+              <td
+                style={{
+                  borderTopRightRadius: i.id === 0 ? "0.5rem" : "",
+                  borderBottomRightRadius: i.id === 5 ? "0.5rem" : "",
+                }}
+              >
                 {state === true ? (
                   <>
-                    <input disabled type="text" value={i.ans} />
+                    <input
+                      disabled
+                      type="text"
+                      value={i.ans}
+                      style={{
+                        width: "100%",
+                        backgroundColor: i.id % 2 === 0 ? "#f2f2f2" : "#ffffff",
+                      }}
+                    />
                     {diffAns.includes(i.id) ? <>&times;</> : <>&#x2713;</>}
                   </>
                 ) : (
@@ -118,7 +140,10 @@ function StructuredMode({ tenses, words }) {
                     <input
                       type="text"
                       value={i.ans}
-                      style={{ width: "100%" }}
+                      style={{
+                        width: "100%",
+                        backgroundColor: i.id % 2 === 0 ? "#f2f2f2" : "#ffffff",
+                      }}
                       onChange={(e) => {
                         HandleAnswer({
                           ...i,
@@ -143,43 +168,66 @@ function StructuredMode({ tenses, words }) {
           {points <= (words.length * 6) / 2 ? (
             <>
               <h3 className="text-center text-white">
-                {points} / {words.length * 6}
+                {points} / {words.length * tenses.length * 6}
               </h3>
-              <h3 className="text-white">u suck</h3>
+              <div>
+                <h3 className="text-white">u suck</h3>
+              </div>
+              <div className="pot">
+                <iframe
+                  src="https://giphy.com/embed/h3e3Tch1zrXgrtHwaF"
+                  title="dumbass1"
+                ></iframe>
+              </div>
+              <div className="d-flex justify-content-center">
+                <iframe
+                  src="https://giphy.com/embed/kF2dSGhb3O5NJZnV0A"
+                  title="dumbass2"
+                ></iframe>
+              </div>
             </>
           ) : (
-            <h3 className="text center text-white">
-              {points} / {words.length * 6}
-            </h3>
+            <>
+              <h3 className="text-center text-white">
+                {points} / {words.length * tenses.length * 6}
+              </h3>
+              <h2 className="text-center">practise more pls..........</h2>
+            </>
           )}
         </div>
       ) : (
         <>
           <div>{body}</div>
-          <button
-            onClick={() => {
-              if (state) {
-                setDiffAns([]);
-                setInput(structuredAns);
-                if (tense === tenses.length - 1) {
-                  if (number < words.length - 1) {
-                    setTense(0);
-                    HandleNumber();
+          <div className="w-100 d-flex justify-content-center">
+            <button
+              className="shadow-lg p-3 mb-5 rounded bg-body-tertiary btn btn-sm"
+              onClick={() => {
+                if (state) {
+                  setInput(structuredAns);
+                  if (tense === tenses.length - 1) {
+                    if (number < words.length - 1) {
+                      setTense(0);
+                      HandleNumber();
+                    } else {
+                      setShowPoints(!showPoints);
+                    }
                   } else {
-                    setShowPoints(!showPoints);
+                    HandleTense();
                   }
-                } else {
-                  HandleTense();
                 }
-              } else {
+                if (state) {
+                  setPoints((p) => p + 6 - diffAns.length);
+                } else {
+                  setDiffAns([]);
+                }
+
                 HandleDiff(inputAns, tensesAnswer);
-                setPoints((p) => p + (6 - diffAns.length));
-              }
-              setState(!state);
-            }}
-          >
-            {verifyOrNext}
-          </button>
+                setState(!state);
+              }}
+            >
+              {verifyOrNext}
+            </button>
+          </div>
         </>
       )}
     </>
