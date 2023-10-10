@@ -4,6 +4,7 @@ import Menu from "./Menu";
 import Modes from "./Modes";
 import FinalPhase from "./FinalPhase";
 import toast, { Toaster } from "react-hot-toast";
+import { motion, AnimatePresence } from "framer-motion";
 
 const initialStates = {
   phase1: true,
@@ -125,40 +126,68 @@ export default function Main() {
   }
 
   return (
-    <div className="mt-5">
+    <div className="mt-5" style={{ display: "" }}>
       <div>
         <Toaster position="bottom-right" reverseOrder={false} />
       </div>
-      <div style={{ display: states.phase1 ? "block" : "none" }}>
-        <fieldset>
-          <AddInput
-            output={output}
-            onOutput={HandleAdd}
-            onDelete={HandleDelete}
-          />
-          <Menu tenses={tenses} HandleToggle={HandleToggle} />
-        </fieldset>
-        <Modes whichMode={selectedMode} />
-        <div className="w-25 mx-auto d-flex justify-content-center">
-          <button
-            className="shadow-lg p-3 mb-5 bg-body-tertiary mt-3 btn-sm btn rounded"
-            onClick={(e) => {
-              if (output.length !== 0 && checkTenses.length !== 0) {
-                ToggleInfo(e, "phase2", "phase1");
-              } else {
-                notify();
-              }
+      {states.phase1 && (
+        <AnimatePresence>
+          <motion.div
+            style={{ display: states.phase1 ? "block" : "none" }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.9 }}
+            exit={{ opacity: 0 }}
+            transition={{
+              duration: "1",
             }}
           >
-            Next
-          </button>
-        </div>
-      </div>
-      <div style={{ display: states.phase2 ? "block" : "none" }}>
-        {states.phase2 && (
-          <FinalPhase tenses={checkTenses} mode={selectedMode} words={output} />
-        )}
-      </div>
+            <fieldset>
+              <AddInput
+                output={output}
+                onOutput={HandleAdd}
+                onDelete={HandleDelete}
+              />
+              <Menu tenses={tenses} HandleToggle={HandleToggle} />
+            </fieldset>
+            <Modes whichMode={selectedMode} />
+            <div className="w-25 mx-auto d-flex justify-content-center">
+              <motion.button
+                className="shadow-lg p-3 mb-5 bg-body-tertiary mt-3 btn-sm btn rounded"
+                whileHover={{ scale: 1.2 }}
+                whileTap={{
+                  scale: 1,
+                }}
+                onClick={(e) => {
+                  if (output.length !== 0 && checkTenses.length !== 0) {
+                    ToggleInfo(e, "phase2", "phase1");
+                  } else {
+                    notify();
+                  }
+                }}
+              >
+                Next
+              </motion.button>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+      )}
+      {states.phase2 && (
+        <AnimatePresence>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.9, x: 0 }}
+            transition={{
+              duration: "1",
+            }}
+          >
+            <FinalPhase
+              tenses={checkTenses}
+              mode={selectedMode}
+              words={output}
+            />
+          </motion.div>
+        </AnimatePresence>
+      )}
     </div>
   );
 }

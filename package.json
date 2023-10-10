@@ -21,6 +21,7 @@
     "react-hot-toast": "^2.4.1",
     "react-scripts": "5.0.1",
     "react-select": "^5.7.4",
+    "react-snowfall": "^1.2.1",
     "react-tsparticles": "^2.12.2",
     "react-window": "^1.8.9",
     "react-windowed-select": "^5.1.0",

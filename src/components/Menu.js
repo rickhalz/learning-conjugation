@@ -3,12 +3,7 @@ import { motion } from "framer-motion";
 export default function Menu({ tenses, HandleToggle }) {
   return (
     <div className="w-75 mx-auto">
-      <table
-        className="table table-striped"
-        style={{
-          opacity: "0.9",
-        }}
-      >
+      <table className="table table-striped">
         <tbody>
           <tr>
             <th colSpan="8" className="rounded-top-3">
