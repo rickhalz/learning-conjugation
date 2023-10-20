@@ -43,7 +43,8 @@ export default function AddInput({ output, onOutput, onDelete }) {
               }
             } else if (
               e.key === "Enter" &&
-              data.includes(input.toLowerCase().trim()) === false
+              data.includes(input.toLowerCase().trim()) === false &&
+              input.trim() !== ""
             ) {
               notify2();
             }

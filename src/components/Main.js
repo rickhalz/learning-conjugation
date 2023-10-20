@@ -1,7 +1,6 @@
 import { React, useState } from "react";
 import AddInput from "./SearchBar";
 import Menu from "./Menu";
-import Modes from "./Modes";
 import FinalPhase from "./FinalPhase";
 import toast, { Toaster } from "react-hot-toast";
 import { motion, AnimatePresence } from "framer-motion";
@@ -135,7 +134,7 @@ export default function Main() {
           <motion.div
             style={{ display: states.phase1 ? "block" : "none" }}
             initial={{ opacity: 0 }}
-            animate={{ opacity: 0.9 }}
+            animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{
               duration: "1",
@@ -149,7 +148,6 @@ export default function Main() {
               />
               <Menu tenses={tenses} HandleToggle={HandleToggle} />
             </fieldset>
-            <Modes whichMode={selectedMode} />
             <div className="w-25 mx-auto d-flex justify-content-center">
               <motion.button
                 className="shadow-lg p-3 mb-5 bg-body-tertiary mt-3 btn-sm btn rounded"
@@ -175,7 +173,7 @@ export default function Main() {
         <AnimatePresence>
           <motion.div
             initial={{ opacity: 0 }}
-            animate={{ opacity: 0.9, x: 0 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{
               duration: "1",
             }}
